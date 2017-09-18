@@ -1,3 +1,5 @@
+package com.BouncingBall.Simple;
+
 import java.awt.*;
 import java.util.Formatter;
 import javax.swing.*;
