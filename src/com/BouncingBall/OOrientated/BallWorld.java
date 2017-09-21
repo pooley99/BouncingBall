@@ -19,14 +19,15 @@ import javax.swing.*;
 
 public class BallWorld extends JPanel {
 
-    private static final int UPDATE_RATE = 30;
-
     private Ball ball;
     private ContainerBox box;
 
     private DrawCanvas canvas;
     private int canvasWidth;
     private int canvasHeight;
+
+    private static final int UPDATE_RATE = 30;
+    private static final float EPSILON_TIME = 1e-2f;
 
     public BallWorld(int width, int height){
 
@@ -62,24 +63,70 @@ public class BallWorld extends JPanel {
 
     public void gameStart(){
         Thread gameThread = new Thread(() -> {
-                while(true){
-                    gameUpdate();
+                while(true) {
+                    /*gameUpdate();
                     repaint();
                     try{
                         //refresh rate and allows control to be relinquished to EDT for event handling and repainting
                         Thread.sleep(1000/UPDATE_RATE);
                     } catch(InterruptedException ex){}
+                }*/
+                    long beginTimeMillis, timeTakenMillis, timeLeftMillis;
+                    beginTimeMillis = System.currentTimeMillis();
+
+                    //Execute one game step
+                    gameUpdate();
+                    //refresh display
+                    repaint();
+
+                    //provide the necessary delay to meet the target rate
+                    timeTakenMillis = System.currentTimeMillis() - beginTimeMillis;
+                    timeLeftMillis = 1000L / UPDATE_RATE - timeTakenMillis;
+                    if (timeLeftMillis < 5) timeLeftMillis = 5; //set a minimum
+
+                    //Delay and give other thread a chance
+                    try {
+                        Thread.sleep(timeLeftMillis);
+                    } catch (InterruptedException ex) {
+
+                    }
                 }
         });
         gameThread.start();
     }
 
     public void gameUpdate(){
-        //ball.moveOneStepWithCollisionDetection(box);
-        //Detect collision with container
+/*        //Detect collision with container
         ball.intersect(this.box);
         //update the ball's state with collision
-        ball.update();
+        ball.update();*/
+
+        float timeLeft = 1.0f; //one time step to begin
+        //Repeat until the one time-step is up
+        do{
+            //Need to find the earliest collision time among all objects
+            float  earliestCollisionTime = timeLeft;
+            //Special case here as there is only one moving ball
+            ball.intersect(box, timeLeft);
+            if(ball.earliestCollisionResponse.t < earliestCollisionTime){
+                earliestCollisionTime = ball.earliestCollisionResponse.t;
+            }
+
+            //Update all the objects for earliestCollisionTime
+            ball.update(earliestCollisionTime);
+
+            //Testing Only - Show collision position
+            if(earliestCollisionTime > 0.05){
+                repaint();
+                try{
+                    Thread.sleep((long)(1000L / UPDATE_RATE * earliestCollisionTime));
+                } catch (InterruptedException ex){
+
+                }
+            }
+            timeLeft -= earliestCollisionTime;
+        } while(timeLeft > EPSILON_TIME);
+
     }
 
     class DrawCanvas extends JPanel{

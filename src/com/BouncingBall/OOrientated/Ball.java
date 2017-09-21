@@ -23,7 +23,7 @@ public class Ball {
     private float speedX, speedY;
     private float radius;
     private Color color;
-    private CollisionResponse earliestCollisionResponse = new CollisionResponse();
+    CollisionResponse earliestCollisionResponse = new CollisionResponse();
 
     private static final Color DEFAULT_COLOR = Color.BLUE;
 
@@ -108,10 +108,10 @@ public class Ball {
     }
 
 
-    public void intersect(ContainerBox box){
+    public void intersect(ContainerBox box, float timeLimit){
         CollisionPhysics.pointIntersectsRectangleOuter(this.x, this.y, this.speedX, this.speedY, this.radius,
                 box.minX, box.minY, box.maxX, box.maxY,
-                1.0f, tempResponse);
+                timeLimit, tempResponse);
         if(tempResponse.t < this.earliestCollisionResponse.t){
             this.earliestCollisionResponse.copy(tempResponse);
         }
@@ -122,8 +122,8 @@ public class Ball {
      * Move for one time-step if no collision occurs; otherwise move up to
      * the earliest detected collision
      */
-    public void update(){
-        if(earliestCollisionResponse.t <= 1.0f){
+    public void update(float time){
+        if(earliestCollisionResponse.t <= time){
             //This ball collided
             this.x = earliestCollisionResponse.getNewX(this.x, this.speedX);
             this.y = earliestCollisionResponse.getNewY(this.y, this.speedY);
