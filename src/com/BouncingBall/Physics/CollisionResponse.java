@@ -32,18 +32,18 @@ public class CollisionResponse {
 
     public float getNewX(float currentX, float speedX){
         //subtract by a small thread to make sure does not cross the bounds
-        if(this.t > this.T_EPSILON){
+        if(this.t > T_EPSILON){
             //has effect of moving it back a small step ensuring does not stick to bound
-            return (float)(currentX + speedX * (this.t - this.T_EPSILON));
+            return (float)(currentX + speedX * (this.t - T_EPSILON));
         }else{
             return currentX;
         }
     }
     public float getNewY(float currentY, float speedY){
         //subtract by a small thread to make sure does not cross the bounds
-        if(this.t > this.T_EPSILON){
+        if(this.t > T_EPSILON){
             //has effect of moving it back a small step ensuring does not stick to bound
-            return (float)(currentY + speedY * (this.t - this.T_EPSILON));
+            return (float)(currentY + speedY * (this.t - T_EPSILON));
         }else{
             return currentY;
         }

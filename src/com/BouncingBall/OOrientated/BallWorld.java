@@ -75,7 +75,11 @@ public class BallWorld extends JPanel {
     }
 
     public void gameUpdate(){
-        ball.moveOneStepWithCollisionDetection(box);
+        //ball.moveOneStepWithCollisionDetection(box);
+        //Detect collision with container
+        ball.intersect(this.box);
+        //update the ball's state with collision
+        ball.update();
     }
 
     class DrawCanvas extends JPanel{
