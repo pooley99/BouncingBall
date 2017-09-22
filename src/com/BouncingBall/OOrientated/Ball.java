@@ -1,4 +1,7 @@
 package com.BouncingBall.OOrientated;
+import com.BouncingBall.Physics.CollisionPhysics;
+import com.BouncingBall.Physics.CollisionResponse;
+
 import java.awt.*;
 import java.util.Formatter;
 
@@ -8,9 +11,11 @@ import java.util.Formatter;
  * draw method creates rectangle bound oval of ball color
  * getSpeed
  * getMoveAngle
- * getMass radius^3/1000
- * getKineticEnergy 0.5mv^2
- * @Override toString to display position, radius, speed, angle, kinetic energy
+ * getMass: radius^3/1000
+ * getKineticEnergy: 0.5mv^2
+ * @Override toString: to display position, radius, speed, angle, kinetic energy
+ * intersect: tests for collision with the border
+ * update: moves the ball on one time-step
  */
 public class Ball {
 
@@ -18,10 +23,13 @@ public class Ball {
     private float speedX, speedY;
     private float radius;
     private Color color;
+    private CollisionResponse earliestCollisionResponse = new CollisionResponse();
+
     private static final Color DEFAULT_COLOR = Color.BLUE;
 
     private StringBuilder sb = new StringBuilder();
     private Formatter formatter = new Formatter(this.sb);
+    private static CollisionResponse tempResponse = new CollisionResponse();
 
     public Ball(float x, float y, float radius, float speed, float angleInDeg, Color color){
         this.x = x;
@@ -97,6 +105,35 @@ public class Ball {
         "S = %4.1f \u0398 = %4.0f KE = %4.0f",
         this.x, this.y, this.radius, this.speedX, this.speedY, getSpeed(), getMoveAngle(), getKineticEnergy());
         return sb.toString();
+    }
+
+
+    public void intersect(ContainerBox box){
+        CollisionPhysics.pointIntersectsRectangleOuter(this.x, this.y, this.speedX, this.speedY, this.radius,
+                box.minX, box.minY, box.maxX, box.maxY,
+                1.0f, tempResponse);
+        if(tempResponse.t < this.earliestCollisionResponse.t){
+            this.earliestCollisionResponse.copy(tempResponse);
+        }
+    }
+
+    /**
+     * Update the states of the ball for one time-step
+     * Move for one time-step if no collision occurs; otherwise move up to
+     * the earliest detected collision
+     */
+    public void update(){
+        if(earliestCollisionResponse.t <= 1.0f){
+            //This ball collided
+            this.x = earliestCollisionResponse.getNewX(this.x, this.speedX);
+            this.y = earliestCollisionResponse.getNewY(this.y, this.speedY);
+            this.speedX = (float)earliestCollisionResponse.newSpeedX;
+            this.speedY = (float)earliestCollisionResponse.newSpeedY;
+        }else {
+            this.x += this.speedX;
+            this.y += this.speedY;
+        }
+        earliestCollisionResponse.reset();
     }
 
 }
