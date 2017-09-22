@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  * BallWorld
@@ -26,6 +28,8 @@ public class BallWorld extends JPanel {
     private int canvasWidth;
     private int canvasHeight;
 
+    private boolean paused = false;
+    private ControlPanel control;
     private static final int UPDATE_RATE = 30;
     private static final float EPSILON_TIME = 1e-2f;
 
@@ -58,6 +62,11 @@ public class BallWorld extends JPanel {
             }
         });
 
+        control = new ControlPanel();
+        this.setLayout(new BorderLayout());
+        this.add(canvas, BorderLayout.CENTER);
+        this.add(control, BorderLayout.SOUTH);
+
         gameStart();
     }
 
@@ -74,10 +83,12 @@ public class BallWorld extends JPanel {
                     long beginTimeMillis, timeTakenMillis, timeLeftMillis;
                     beginTimeMillis = System.currentTimeMillis();
 
-                    //Execute one game step
-                    gameUpdate();
-                    //refresh display
-                    repaint();
+                    if (!paused) {
+                        //Execute one game step
+                        gameUpdate();
+                        //refresh display
+                        repaint();
+                    }
 
                     //provide the necessary delay to meet the target rate
                     timeTakenMillis = System.currentTimeMillis() - beginTimeMillis;
@@ -115,7 +126,7 @@ public class BallWorld extends JPanel {
             //Update all the objects for earliestCollisionTime
             ball.update(earliestCollisionTime);
 
-            //Testing Only - Show collision position
+            /*//Testing Only - Show collision position
             if(earliestCollisionTime > 0.05){
                 repaint();
                 try{
@@ -123,10 +134,74 @@ public class BallWorld extends JPanel {
                 } catch (InterruptedException ex){
 
                 }
-            }
+            }*/
             timeLeft -= earliestCollisionTime;
         } while(timeLeft > EPSILON_TIME);
 
+    }
+
+    class ControlPanel extends JPanel{
+        public ControlPanel() {
+            // A checkbox to toggle pause/resume movement
+            JCheckBox pauseControl = new JCheckBox();
+            this.add(new JLabel("Pause"));
+            this.add(pauseControl);
+            pauseControl.addItemListener(new ItemListener() {
+                @Override
+                public void itemStateChanged(ItemEvent e) {
+                    paused = !paused;  // Toggle pause/resume flag
+                }
+            });
+
+            // A slider for adjusting the speed of the ball
+            int minSpeed = 2;
+            int maxSpeed = 20;
+            JSlider speedControl = new JSlider(JSlider.HORIZONTAL, minSpeed, maxSpeed,
+                    (int)ball.getSpeed());
+            this.add(new JLabel("Speed"));
+            this.add(speedControl);
+            speedControl.addChangeListener(new ChangeListener() {
+                @Override
+                public void stateChanged(ChangeEvent e) {
+                    JSlider source = (JSlider)e.getSource();
+                    if (!source.getValueIsAdjusting()) {
+                        int newSpeed = (int)source.getValue();
+                        int currentSpeed = (int)ball.getSpeed();
+                        ball.speedX *= (float)newSpeed / currentSpeed ;
+                        ball.speedY *= (float)newSpeed / currentSpeed;
+                    }
+                }
+            });
+
+            // A slider for adjusting the radius of the ball
+            int minRadius = 10;
+            int maxRadius = ((canvasHeight > canvasWidth) ? canvasWidth: canvasHeight) / 2 - 8;
+            JSlider radiusControl = new JSlider(JSlider.HORIZONTAL, minRadius,
+                    maxRadius, (int)ball.radius);
+            this.add(new JLabel("Ball Radius"));
+            this.add(radiusControl);
+            radiusControl.addChangeListener(new ChangeListener() {
+                @Override
+                public void stateChanged(ChangeEvent e) {
+                    JSlider source = (JSlider)e.getSource();
+                    if (!source.getValueIsAdjusting()) {
+                        float newRadius = source.getValue();
+                        ball.radius = newRadius;
+                        // Reposition the ball such as it is inside the box
+                        if (ball.x - ball.radius < box.minX) {
+                            ball.x = ball.radius + 1;
+                        } else if (ball.x + ball.radius > box.maxX) {
+                            ball.x = box.maxX - ball.radius - 1;
+                        }
+                        if (ball.y - ball.radius < box.minY) {
+                            ball.y = ball.radius + 1;
+                        } else if (ball.y + ball.radius > box.maxY) {
+                            ball.y = box.maxY - ball.radius - 1;
+                        }
+                    }
+                }
+            });
+        }
     }
 
     class DrawCanvas extends JPanel{

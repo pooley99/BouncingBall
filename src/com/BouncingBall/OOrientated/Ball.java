@@ -19,9 +19,9 @@ import java.util.Formatter;
  */
 public class Ball {
 
-    private float x, y;
-    private float speedX, speedY;
-    private float radius;
+    float x, y;
+    float speedX, speedY;
+    float radius;
     private Color color;
     CollisionResponse earliestCollisionResponse = new CollisionResponse();
 
