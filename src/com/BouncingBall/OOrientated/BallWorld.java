@@ -35,8 +35,9 @@ public class BallWorld extends JPanel {
 
     public BallWorld(int width, int height){
 
+        final int controlHeight = 30;
         this.canvasWidth = width;
-        this.canvasHeight = height;
+        this.canvasHeight = height - controlHeight;
 
         Random rand = new Random();
         int radius = 50;
@@ -48,8 +49,10 @@ public class BallWorld extends JPanel {
 
         this.box = new ContainerBox(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
         this.canvas = new DrawCanvas();
+        control = new ControlPanel();
         this.setLayout(new BorderLayout());
         this.add(this.canvas, BorderLayout.CENTER);
+        this.add(control, BorderLayout.SOUTH);
 
         this.addComponentListener(new ComponentAdapter() {
             @Override
@@ -57,15 +60,13 @@ public class BallWorld extends JPanel {
                 Component c = (Component)e.getSource();
                 Dimension dim = c.getSize();
                 canvasWidth = dim.width;
-                canvasHeight = dim.height;
+                canvasHeight = dim.height - controlHeight;
                 box.set(0, 0, canvasWidth, canvasHeight);
             }
         });
 
-        control = new ControlPanel();
-        this.setLayout(new BorderLayout());
-        this.add(canvas, BorderLayout.CENTER);
-        this.add(control, BorderLayout.SOUTH);
+
+
 
         gameStart();
     }

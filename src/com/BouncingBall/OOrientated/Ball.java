@@ -29,7 +29,7 @@ public class Ball {
 
     private StringBuilder sb = new StringBuilder();
     private Formatter formatter = new Formatter(this.sb);
-    private static CollisionResponse tempResponse = new CollisionResponse();
+    private CollisionResponse tempResponse = new CollisionResponse();
 
     public Ball(float x, float y, float radius, float speed, float angleInDeg, Color color){
         this.x = x;
