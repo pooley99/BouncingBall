@@ -49,4 +49,11 @@ public class CollisionResponse {
         }
     }
 
+    public double getImpactX(float point1X, float speed1X) {
+        return point1X + speed1X*t;
+    }
+
+    public double getImpactY(float point1Y, float speed1Y) {
+        return point1Y + speed1Y*t;
+    }
 }

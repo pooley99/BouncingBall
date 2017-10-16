@@ -21,7 +21,7 @@ import javax.swing.event.ChangeListener;
 
 public class BallWorld extends JPanel {
 
-    private Ball ball;
+    //private Ball ball;
     private ContainerBox box;
 
     private DrawCanvas canvas;
@@ -33,19 +33,41 @@ public class BallWorld extends JPanel {
     private static final int UPDATE_RATE = 30;
     private static final float EPSILON_TIME = 1e-2f;
 
+    private static final int MAX_BALLS = 25;
+    private int currentNumBalls;
+    private Ball[] balls = new Ball[MAX_BALLS];
+
     public BallWorld(int width, int height){
 
         final int controlHeight = 30;
         this.canvasWidth = width;
         this.canvasHeight = height - controlHeight;
 
-        Random rand = new Random();
+        /*Random rand = new Random();
         int radius = 50;
         int x = rand.nextInt(this.canvasWidth - radius * 2 - 20 ) + radius + 10;
         int y = rand.nextInt(this.canvasHeight - radius * 2 - 20) + radius + 10;
         int speed = 5;
         int angleInDeg = rand.nextInt(360);
-        this.ball = new Ball(x, y, radius, speed, angleInDeg, Color.BLUE);
+        this.ball = new Ball(x, y, radius, speed, angleInDeg, Color.BLUE);*/
+
+        currentNumBalls = 11;
+        balls[0] = new Ball(100, 410, 25, 3, 34, Color.YELLOW);
+        balls[1] = new Ball(80, 350, 25, 2, -114, Color.YELLOW);
+        balls[2] = new Ball(530, 400, 30, 3, 14, Color.GREEN);
+        balls[3] = new Ball(400, 400, 30, 3, 14, Color.GREEN);
+        balls[4] = new Ball(400, 50, 35, 1, -47, Color.PINK);
+        balls[5] = new Ball(480, 320, 35, 4, 47, Color.PINK);
+        balls[6] = new Ball(80, 150, 40, 1, -114, Color.ORANGE);
+        balls[7] = new Ball(100, 240, 40, 2, 60, Color.ORANGE);
+        balls[8] = new Ball(250, 380, 50, 3, -42, Color.BLUE);
+        balls[9] = new Ball(200, 80, 70, 6, -84, Color.CYAN);
+        balls[10] = new Ball(500, 170, 90, 6, -42, Color.MAGENTA);
+
+        for(int i = currentNumBalls; i < MAX_BALLS; i++){
+            balls[i] = new Ball(20, canvasHeight - 20, 15, 5, 45, Color.RED);
+        }
+
 
         this.box = new ContainerBox(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
         this.canvas = new DrawCanvas();
@@ -64,9 +86,6 @@ public class BallWorld extends JPanel {
                 box.set(0, 0, canvasWidth, canvasHeight);
             }
         });
-
-
-
 
         gameStart();
     }
@@ -117,26 +136,42 @@ public class BallWorld extends JPanel {
         //Repeat until the one time-step is up
         do{
             //Need to find the earliest collision time among all objects
-            float  earliestCollisionTime = timeLeft;
+            float tMin = timeLeft;
             //Special case here as there is only one moving ball
-            ball.intersect(box, timeLeft);
-            if(ball.earliestCollisionResponse.t < earliestCollisionTime){
-                earliestCollisionTime = ball.earliestCollisionResponse.t;
+
+            for(int i = 0; i < currentNumBalls; i++){
+                for(int j = 0; j < currentNumBalls; j++){
+                    if (i < j) {
+                        balls[i].intersect(balls[j], tMin);
+                        if(balls[i].earliestCollisionResponse.t < tMin){
+                            tMin = balls[i].earliestCollisionResponse.t;
+                        }
+                    }
+                }
             }
 
-            //Update all the objects for earliestCollisionTime
-            ball.update(earliestCollisionTime);
+            for (int i = 0; i < currentNumBalls; i++) {
+                balls[i].intersect(box, timeLeft);
+                if(balls[i].earliestCollisionResponse.t < tMin){
+                    tMin = balls[i].earliestCollisionResponse.t;
+                }
+            }
+
+            //Update all the objects for tMin
+            for (int i = 0; i < currentNumBalls; i++) {
+                balls[i].update(tMin);
+            }
 
             /*//Testing Only - Show collision position
-            if(earliestCollisionTime > 0.05){
+            if(tMin > 0.05){
                 repaint();
                 try{
-                    Thread.sleep((long)(1000L / UPDATE_RATE * earliestCollisionTime));
+                    Thread.sleep((long)(1000L / UPDATE_RATE * tMin));
                 } catch (InterruptedException ex){
 
                 }
             }*/
-            timeLeft -= earliestCollisionTime;
+            timeLeft -= tMin;
         } while(timeLeft > EPSILON_TIME);
 
     }
@@ -155,10 +190,17 @@ public class BallWorld extends JPanel {
             });
 
             // A slider for adjusting the speed of the ball
-            int minSpeed = 2;
-            int maxSpeed = 20;
-            JSlider speedControl = new JSlider(JSlider.HORIZONTAL, minSpeed, maxSpeed,
-                    (int)ball.getSpeed());
+            //store starting speeds
+            final float[] ballSavedSpeedXs = new float[MAX_BALLS];
+            final float[] ballSavedSpeedYs = new float[MAX_BALLS];
+            for(int i=0; i<currentNumBalls; i++){
+                ballSavedSpeedXs[i] = balls[i].speedX;
+                ballSavedSpeedYs[i] = balls[i].speedY;
+            }
+            //as percentage
+            int minSpeed = 5;
+            int maxSpeed = 200;
+            JSlider speedControl = new JSlider(JSlider.HORIZONTAL, minSpeed, maxSpeed,100);
             this.add(new JLabel("Speed"));
             this.add(speedControl);
             speedControl.addChangeListener(new ChangeListener() {
@@ -166,15 +208,31 @@ public class BallWorld extends JPanel {
                 public void stateChanged(ChangeEvent e) {
                     JSlider source = (JSlider)e.getSource();
                     if (!source.getValueIsAdjusting()) {
-                        int newSpeed = (int)source.getValue();
-                        int currentSpeed = (int)ball.getSpeed();
-                        ball.speedX *= (float)newSpeed / currentSpeed ;
-                        ball.speedY *= (float)newSpeed / currentSpeed;
+                        int percentage = (int)source.getValue();
+                        for (int i = 0; i < currentNumBalls; i++) {
+                            balls[i].speedX = ballSavedSpeedXs[i] * (float)percentage / 100f ;
+                            balls[i].speedY = ballSavedSpeedYs[i] * (float)percentage / 100f;
+                        }
                     }
                 }
             });
 
-            // A slider for adjusting the radius of the ball
+            //Launch Button for remaining balls
+            final JButton launchControl = new JButton("Launch New Ball");
+            this.add(launchControl);
+            launchControl.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if(currentNumBalls < MAX_BALLS){
+                        currentNumBalls++;
+                        if(currentNumBalls == MAX_BALLS){
+                            launchControl.setEnabled(false);
+                        }
+                    }
+                }
+            });
+
+            /*// A slider for adjusting the radius of the ball
             int minRadius = 10;
             int maxRadius = ((canvasHeight > canvasWidth) ? canvasWidth: canvasHeight) / 2 - 8;
             JSlider radiusControl = new JSlider(JSlider.HORIZONTAL, minRadius,
@@ -201,7 +259,7 @@ public class BallWorld extends JPanel {
                         }
                     }
                 }
-            });
+            });*/
         }
     }
 
@@ -211,11 +269,15 @@ public class BallWorld extends JPanel {
         public void paintComponent(Graphics g){
             super.paintComponent(g);
             box.draw(g);
-            ball.draw(g);
+            for (int i = 0; i < currentNumBalls; i++) {
+                balls[i].draw(g);
+            }
 
             g.setColor(Color.WHITE);
             g.setFont(new Font("Courier New", Font.PLAIN, 12));
-            g.drawString("Ball " + ball.toString(), 20, 30);
+            for (int i = 0; i < currentNumBalls; i++) {
+                g.drawString("Ball " + i + " " + balls[i].toString(), 20, (i+1) * 30);
+            }
         }
 
         @Override
