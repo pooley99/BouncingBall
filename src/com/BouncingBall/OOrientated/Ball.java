@@ -84,8 +84,20 @@ public class Ball {
         }
     }
 
+    public float getRadius(){
+        return this.radius;
+    }
+
+    public float[] getPositionXY(){
+        return new float[] {this.x, this.y};
+    }
+
     public float getSpeed(){
         return (float)Math.sqrt(this.speedX * this.speedX + this.speedY * this.speedY);
+    }
+
+    public float[] getSpeedXY(){
+        return new float[] {this.speedX, this.speedY};
     }
 
     public float getMoveAngle(){
@@ -93,7 +105,7 @@ public class Ball {
     }
 
     public float getMass(){
-        return this.radius * this.radius * this.radius / 1000f;
+        return this.radius * this.radius * this.radius; // / 1000f;
     }
 
     public float getKineticEnergy(){
@@ -112,18 +124,14 @@ public class Ball {
 
 
     public void intersect(ContainerBox box, float timeLimit){
-        CollisionPhysics.pointIntersectsRectangleOuter(this.x, this.y, this.speedX, this.speedY, this.radius,
-                box.minX, box.minY, box.maxX, box.maxY,
-                timeLimit, tempResponse);
+        CollisionPhysics.pointIntersectsRectangleOuter(this, box.minX, box.minY, box.maxX, box.maxY, timeLimit, tempResponse);
         if(tempResponse.t < this.earliestCollisionResponse.t){
             this.earliestCollisionResponse.copy(tempResponse);
         }
     }
 
     public void intersect(Ball another, float timeLimit){
-        CollisionPhysics.movingPointIntersectsMovingPoint(this.x, this.y, this.speedX, this.speedY, this.radius,
-                another.x, another.y, another.speedX, another.speedY, another.radius,
-                timeLimit, thisRepsonse, anotherResponse);
+        CollisionPhysics.movingPointIntersectsMovingPoint(this, another, timeLimit, thisRepsonse, anotherResponse);
         if (anotherResponse.t < another.earliestCollisionResponse.t){
             another.earliestCollisionResponse.copy(anotherResponse);
         }
