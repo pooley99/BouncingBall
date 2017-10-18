@@ -1,4 +1,6 @@
 package com.BouncingBall.OOrientated;
+
+import com.BouncingBall.OOrientated.Obstacle.CircleObstacle;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
@@ -37,6 +39,10 @@ public class BallWorld extends JPanel {
     private int currentNumBalls;
     private Ball[] balls = new Ball[MAX_BALLS];
 
+    private static final int MAX_OBSTACLES = 10;
+    private int currentNumObstacles;
+    private Obstacle[] obstacles = new Obstacle[MAX_OBSTACLES];
+
     public BallWorld(int width, int height){
 
         final int controlHeight = 30;
@@ -68,6 +74,8 @@ public class BallWorld extends JPanel {
             balls[i] = new Ball(20, canvasHeight - 20, 15, 5, 45, Color.RED);
         }
 
+        currentNumObstacles = 1;
+        obstacles[0] = new CircleObstacle(400, 250, 30);
 
         this.box = new ContainerBox(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
         this.canvas = new DrawCanvas();
@@ -154,6 +162,15 @@ public class BallWorld extends JPanel {
                 balls[i].intersect(box, timeLeft);
                 if(balls[i].earliestCollisionResponse.t < tMin){
                     tMin = balls[i].earliestCollisionResponse.t;
+                }
+            }
+
+            for(int i =0; i < currentNumObstacles; i++){
+                for(int j=0; j<currentNumBalls; j++){
+                    balls[j].intersect(obstacles[i], timeLeft);
+                    if(balls[j].earliestCollisionResponse.t < tMin){
+                        tMin = balls[j].earliestCollisionResponse.t;
+                    }
                 }
             }
 
@@ -271,6 +288,10 @@ public class BallWorld extends JPanel {
             box.draw(g);
             for (int i = 0; i < currentNumBalls; i++) {
                 balls[i].draw(g);
+            }
+
+            for(int i = 0; i < currentNumObstacles; i++){
+                obstacles[i].draw(g);
             }
 
             g.setColor(Color.WHITE);

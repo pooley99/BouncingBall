@@ -1,5 +1,7 @@
 package com.BouncingBall.OOrientated;
-import java.awt.*;
+
+import java.awt.Color;
+import java.awt.Graphics;
 
 /**
  * Container Box

@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d1efc5d-2817-4c1a-a499-119c152cee1b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerOval.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Obstacle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/ContainerBox.class" afterPath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/ContainerBox.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Ball.java" afterPath="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Ball.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/BallWorld.java" afterPath="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/BallWorld.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerBox.java" afterPath="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerBox.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/BouncingBall/Physics/CollisionPhysics.java" afterPath="$PROJECT_DIR$/src/com/BouncingBall/Physics/CollisionPhysics.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -18,18 +24,56 @@
       <file leaf-file-name="CollisionPhysics.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/Physics/CollisionPhysics.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="225" column="5" lean-forward="false" selection-start-line="225" selection-start-column="5" selection-end-line="225" selection-end-column="5" />
+            <state relative-caret-position="366">
+              <caret line="117" column="8" lean-forward="false" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="8" />
               <folding>
-                <element signature="method#pointIntersectsRectangleOuter#0;class#CollisionPhysics#0" expanded="false" />
                 <element signature="method#pointIntersectsLineVertical#0;class#CollisionPhysics#0" expanded="false" />
                 <element signature="method#pointIntersectsLineHorizontal#0;class#CollisionPhysics#0" expanded="false" />
-                <element signature="method#movingPointIntersectsMovingPoint#0;class#CollisionPhysics#0" expanded="false" />
-                <element signature="method#movingPointIntersectsMovingPointDetection#0;class#CollisionPhysics#0" expanded="false" />
-                <element signature="e#3819#3892#0" expanded="false" />
-                <element signature="method#movingPointIntersectsMovingPointResponse#0;class#CollisionPhysics#0" expanded="false" />
-                <element signature="e#6115#6148#0" expanded="false" />
+                <element signature="method#movingPointIntersectsPoint#0;class#CollisionPhysics#0" expanded="false" />
+                <element signature="e#4736#4809#0" expanded="false" />
+                <element signature="method#movingPointIntersectsPointResponse#0;class#CollisionPhysics#0" expanded="false" />
+                <element signature="e#7072#7105#0" expanded="false" />
                 <element signature="method#rotate#0;class#CollisionPhysics#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BallWorld.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../Downloads/ball_ex6a_circlemany/BallWorld.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2499">
+              <caret line="43" column="32" lean-forward="false" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContainerOval.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerOval.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="15" column="36" lean-forward="false" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#set#0;class#ContainerOval#0" expanded="false" />
+                <element signature="method#draw#0;class#ContainerOval#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Obstacle.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Obstacle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="35" column="32" lean-forward="true" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#495#496#0" expanded="true" />
+                <element signature="e#548#549#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -38,8 +82,8 @@
       <file leaf-file-name="BallWorld.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/BallWorld.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3330">
-              <caret line="49" column="7" lean-forward="false" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
+            <state relative-caret-position="252">
+              <caret line="171" column="68" lean-forward="false" selection-start-line="171" selection-start-column="68" selection-end-line="171" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,14 +94,16 @@
       <file leaf-file-name="Ball.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Ball.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="126" column="101" lean-forward="false" selection-start-line="126" selection-start-column="101" selection-end-line="126" selection-end-column="101" />
+            <state relative-caret-position="345">
+              <caret line="143" column="52" lean-forward="false" selection-start-line="143" selection-start-column="52" selection-end-line="143" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Ball#0;class#Ball#0" expanded="false" />
                 <element signature="method#Ball#1;class#Ball#0" expanded="false" />
                 <element signature="method#moveOneStepWithCollisionDetection#0;class#Ball#0" expanded="false" />
                 <element signature="method#toString#0;class#Ball#0" expanded="false" />
+                <element signature="e#4954#4955#0" expanded="true" />
+                <element signature="e#5015#5016#0" expanded="true" />
                 <element signature="docComment;method#update#0;class#Ball#0" expanded="false" />
                 <element signature="method#update#0;class#Ball#0" expanded="false" />
               </folding>
@@ -90,10 +136,14 @@
       <file leaf-file-name="ContainerBox.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerBox.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="-102">
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="method#ContainerBox#0;class#ContainerBox#0" expanded="false" />
+                <element signature="e#740#741#0" expanded="true" />
+                <element signature="e#809#810#0" expanded="true" />
+                <element signature="method#set#0;class#ContainerBox#0" expanded="false" />
                 <element signature="method#draw#0;class#ContainerBox#0" expanded="false" />
               </folding>
             </state>
@@ -138,13 +188,17 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/MainFullScreenOnly.java" />
         <option value="$PROJECT_DIR$/src/com/BouncingBall/Physics/CollisionResponse.java" />
+        <option value="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerBox.java" />
+        <option value="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerOval.java" />
+        <option value="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Obstacle.java" />
         <option value="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/BallWorld.java" />
         <option value="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Ball.java" />
         <option value="$PROJECT_DIR$/src/com/BouncingBall/Physics/CollisionPhysics.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
+    <option name="x" value="960" />
     <option name="width" value="960" />
     <option name="height" value="1032" />
   </component>
@@ -395,7 +449,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
+    <frame x="960" y="0" width="960" height="1032" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -407,11 +461,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34801763" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35505617" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16770834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3418259" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -431,85 +485,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Ball.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Ball#0;class#Ball#0" expanded="false" />
-            <element signature="method#Ball#1;class#Ball#0" expanded="false" />
-            <element signature="method#moveOneStepWithCollisionDetection#0;class#Ball#0" expanded="false" />
-            <element signature="method#toString#0;class#Ball#0" expanded="false" />
-            <element signature="docComment;method#update#0;class#Ball#0" expanded="false" />
-            <element signature="method#update#0;class#Ball#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/Simple/BouncingBallSimple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1177#1203#0" expanded="false" />
-            <element signature="e#1363#1405#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainFullScreenOnly.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="72" lean-forward="true" selection-start-line="22" selection-start-column="72" selection-end-line="22" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/Physics/CollisionResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="32" lean-forward="true" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/Physics/CollisionPhysics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="method#pointIntersectsRectangleOuter#0;class#CollisionPhysics#0" expanded="false" />
-            <element signature="method#pointIntersectsLineVertical#0;class#CollisionPhysics#0" expanded="false" />
-            <element signature="method#pointIntersectsLineHorizontal#0;class#CollisionPhysics#0" expanded="false" />
-            <element signature="method#movingPointIntersectsMovingPoint#0;class#CollisionPhysics#0" expanded="false" />
-            <element signature="method#movingPointIntersectsMovingPointDetection#0;class#CollisionPhysics#0" expanded="false" />
-            <element signature="e#3819#3892#0" expanded="false" />
-            <element signature="method#movingPointIntersectsMovingPointResponse#0;class#CollisionPhysics#0" expanded="false" />
-            <element signature="e#6115#6148#0" expanded="false" />
-            <element signature="method#rotate#0;class#CollisionPhysics#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Ball.java" />
     <entry file="file://$PROJECT_DIR$/src/MainFullScreenOnly.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -610,6 +590,8 @@
             <element signature="method#Ball#1;class#Ball#0" expanded="false" />
             <element signature="method#moveOneStepWithCollisionDetection#0;class#Ball#0" expanded="false" />
             <element signature="method#toString#0;class#Ball#0" expanded="false" />
+            <element signature="e#4954#4955#0" expanded="true" />
+            <element signature="e#5015#5016#0" expanded="true" />
             <element signature="docComment;method#update#0;class#Ball#0" expanded="false" />
             <element signature="method#update#0;class#Ball#0" expanded="false" />
           </folding>
@@ -651,7 +633,11 @@
         <state relative-caret-position="672">
           <caret line="34" column="33" lean-forward="false" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#ContainerBox#0;class#ContainerBox#0" expanded="false" />
+            <element signature="e#740#741#0" expanded="true" />
+            <element signature="e#809#810#0" expanded="true" />
+            <element signature="method#set#0;class#ContainerBox#0" expanded="false" />
             <element signature="method#draw#0;class#ContainerBox#0" expanded="false" />
           </folding>
         </state>
@@ -668,6 +654,8 @@
             <element signature="method#Ball#1;class#Ball#0" expanded="false" />
             <element signature="method#moveOneStepWithCollisionDetection#0;class#Ball#0" expanded="false" />
             <element signature="method#toString#0;class#Ball#0" expanded="false" />
+            <element signature="e#4954#4955#0" expanded="true" />
+            <element signature="e#5015#5016#0" expanded="true" />
             <element signature="docComment;method#update#0;class#Ball#0" expanded="false" />
             <element signature="method#update#0;class#Ball#0" expanded="false" />
           </folding>
@@ -773,37 +761,103 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../Chess/src/com/chess/engine/board/Move.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerBox.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="-102">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#ContainerBox#0;class#ContainerBox#0" expanded="false" />
+            <element signature="e#740#741#0" expanded="true" />
+            <element signature="e#809#810#0" expanded="true" />
+            <element signature="method#set#0;class#ContainerBox#0" expanded="false" />
             <element signature="method#draw#0;class#ContainerBox#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Ball.java">
+    <entry file="file://$PROJECT_DIR$/../JChess/src/com/jchess/engine/board/Move.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="126" column="101" lean-forward="false" selection-start-line="126" selection-start-column="101" selection-end-line="126" selection-end-column="101" />
+        <state relative-caret-position="-924">
+          <caret line="22" column="52" lean-forward="true" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerOval.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="15" column="36" lean-forward="false" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Ball#0;class#Ball#0" expanded="false" />
-            <element signature="method#Ball#1;class#Ball#0" expanded="false" />
-            <element signature="method#moveOneStepWithCollisionDetection#0;class#Ball#0" expanded="false" />
-            <element signature="method#toString#0;class#Ball#0" expanded="false" />
-            <element signature="docComment;method#update#0;class#Ball#0" expanded="false" />
-            <element signature="method#update#0;class#Ball#0" expanded="false" />
+            <element signature="method#set#0;class#ContainerOval#0" expanded="false" />
+            <element signature="method#draw#0;class#ContainerOval#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/BallWorld.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3330">
-          <caret line="49" column="7" lean-forward="false" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
+        <state relative-caret-position="252">
+          <caret line="171" column="68" lean-forward="false" selection-start-line="171" selection-start-column="68" selection-end-line="171" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Ball.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="143" column="52" lean-forward="false" selection-start-line="143" selection-start-column="52" selection-end-line="143" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Ball#0;class#Ball#0" expanded="false" />
+            <element signature="method#Ball#1;class#Ball#0" expanded="false" />
+            <element signature="method#moveOneStepWithCollisionDetection#0;class#Ball#0" expanded="false" />
+            <element signature="method#toString#0;class#Ball#0" expanded="false" />
+            <element signature="e#4954#4955#0" expanded="true" />
+            <element signature="e#5015#5016#0" expanded="true" />
+            <element signature="docComment;method#update#0;class#Ball#0" expanded="false" />
+            <element signature="method#update#0;class#Ball#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Obstacle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="35" column="32" lean-forward="true" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#495#496#0" expanded="true" />
+            <element signature="e#548#549#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Downloads/ball_ex6a_circlemany/BallWorld.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2499">
+          <caret line="43" column="32" lean-forward="false" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Downloads/ball_ex6a_circlemany/Ball.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="61" column="73" lean-forward="true" selection-start-line="61" selection-start-column="73" selection-end-line="61" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -812,17 +866,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/Physics/CollisionPhysics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="225" column="5" lean-forward="false" selection-start-line="225" selection-start-column="5" selection-end-line="225" selection-end-column="5" />
+        <state relative-caret-position="366">
+          <caret line="117" column="8" lean-forward="false" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="8" />
           <folding>
-            <element signature="method#pointIntersectsRectangleOuter#0;class#CollisionPhysics#0" expanded="false" />
             <element signature="method#pointIntersectsLineVertical#0;class#CollisionPhysics#0" expanded="false" />
             <element signature="method#pointIntersectsLineHorizontal#0;class#CollisionPhysics#0" expanded="false" />
-            <element signature="method#movingPointIntersectsMovingPoint#0;class#CollisionPhysics#0" expanded="false" />
-            <element signature="method#movingPointIntersectsMovingPointDetection#0;class#CollisionPhysics#0" expanded="false" />
-            <element signature="e#3819#3892#0" expanded="false" />
-            <element signature="method#movingPointIntersectsMovingPointResponse#0;class#CollisionPhysics#0" expanded="false" />
-            <element signature="e#6115#6148#0" expanded="false" />
+            <element signature="method#movingPointIntersectsPoint#0;class#CollisionPhysics#0" expanded="false" />
+            <element signature="e#4736#4809#0" expanded="false" />
+            <element signature="method#movingPointIntersectsPointResponse#0;class#CollisionPhysics#0" expanded="false" />
+            <element signature="e#7072#7105#0" expanded="false" />
             <element signature="method#rotate#0;class#CollisionPhysics#0" expanded="false" />
           </folding>
         </state>

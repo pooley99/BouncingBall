@@ -96,21 +96,43 @@ public class CollisionPhysics {
         }
     }
 
-    public static void movingPointIntersectsMovingPoint(Ball ball1, Ball ball2,
-            float timeLimit, CollisionResponse thisResponse, CollisionResponse anotherResponse){
+    public static void pointIntersectsCircleOuter(Ball ball, float outerCenterX, float outerCenterY, float outerRadius,
+                                                  float timeLimit, CollisionResponse response){
+        response.reset();
+
+        float t = pointIntersectsCircleOuterDetection(ball,
+                outerCenterX, outerCenterY, outerRadius);
+
+        if(t > 0 && t <= timeLimit){
+            float impactX = ball.getPositionXY()[0] + ball.getSpeedXY()[0] * t;
+            float impactY = ball.getPositionXY()[1] + ball.getSpeedXY()[1] * t;
+
+            pointIntersectsLineNormalResponse(pointX, pointY, speedX, speedY,
+                    outerCenterX, outerCenterY, impactX, impactY,
+                    response, t);
+        }
+    }
+
+    public static float pointIntersectsCircleOuterDetection(Ball ball, float outerCenterX, float outerCenterY, float outerRadius){
+
+        
+    }
+
+    public static void movingPointIntersectsPoint(Ball ball1, Ball ball2,
+                                                  float timeLimit, CollisionResponse thisResponse, CollisionResponse anotherResponse){
 
         thisResponse.reset();
         anotherResponse.reset();
 
-        float time = movingPointIntersectsMovingPointDetection(ball1, ball2);
+        float time = movingPointIntersectsPointDetection(ball1, ball2);
         if(time > 0 && time < timeLimit){
-            movingPointIntersectsMovingPointResponse(ball1,
+            movingPointIntersectsPointResponse(ball1,
                     ball2,
                     time, thisResponse, anotherResponse);
         }
     }
 
-    public static float movingPointIntersectsMovingPointDetection(Ball ball1, Ball ball2){
+    public static float movingPointIntersectsPointDetection(Ball ball1, Ball ball2){
 
         //detection occurs when the distance between two balls, r, is r = r1 + r2
         //  |point2 - point1|^2 = r^2
@@ -157,8 +179,8 @@ public class CollisionPhysics {
         }
     }
 
-    public static void movingPointIntersectsMovingPointResponse(Ball ball1, Ball ball2,
-            float time, CollisionResponse thisResponse, CollisionResponse anotherResponse){
+    public static void movingPointIntersectsPointResponse(Ball ball1, Ball ball2,
+                                                          float time, CollisionResponse thisResponse, CollisionResponse anotherResponse){
         //calculated using the equations:
         //  v3 = [2*m2*v2 + (m1 - m2)*v1] / (m1 + m2)
         //  v4 = [2*m1*v1 + (m2 - m1)*v2] / (m1 + m2)
@@ -222,6 +244,10 @@ public class CollisionPhysics {
         result = rotate(speed2PAfter, speed2NAfter, -lineAngle);
         anotherResponse.newSpeedX = (float)result[0];
         anotherResponse.newSpeedY = (float)result[1];
+
+    }
+
+    public static void movingPointIntersectsOvalObstacle(Ball ball, int x, int y, int width, int height, float timeLimit, CollisionResponse response){
 
     }
 

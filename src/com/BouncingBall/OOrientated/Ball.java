@@ -131,13 +131,17 @@ public class Ball {
     }
 
     public void intersect(Ball another, float timeLimit){
-        CollisionPhysics.movingPointIntersectsMovingPoint(this, another, timeLimit, thisRepsonse, anotherResponse);
+        CollisionPhysics.movingPointIntersectsPoint(this, another, timeLimit, thisRepsonse, anotherResponse);
         if (anotherResponse.t < another.earliestCollisionResponse.t){
             another.earliestCollisionResponse.copy(anotherResponse);
         }
         if(thisRepsonse.t < this.earliestCollisionResponse.t){
             this.earliestCollisionResponse.copy(thisRepsonse);
         }
+    }
+
+    public void intersect(Obstacle obstacle, float timeLimit){
+        CollisionPhysics.movingPointIntersectsPoint();
     }
 
     /**
