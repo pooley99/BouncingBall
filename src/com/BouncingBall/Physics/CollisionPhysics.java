@@ -132,7 +132,7 @@ public class CollisionPhysics {
 
         // x = (-b + sqrt(b^2 - 4ac))/2a
 
-        double termB2Minus4AC = termB * termB - 4 * termA * termB;
+        double termB2Minus4AC = termB * termB - 4 * termA * termC;
 
         if(termB2Minus4AC < 0){
             return Float.MAX_VALUE;

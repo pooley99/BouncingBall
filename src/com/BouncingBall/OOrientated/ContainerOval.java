@@ -10,7 +10,7 @@ public class ContainerOval {
     Color borderColour;
     Color fillColour;
 
-    ContainerOval(int x, int y, int width, int height, Color borderColour, Color fillColour){
+    ContainerOval(int x, int y, int width, int height, Color fillColour, Color borderColour){
         this.x = x;
         this.y = y;
         this.width = x + width - 1;
@@ -27,13 +27,14 @@ public class ContainerOval {
     public void set(int x, int y, int width, int height){
         this.x = x;
         this.y = y;
+        this.diameter = x + Math.min(width, height) - 1;
         this.width = x + width - 1;
         this.height = y + height - 1;
     }
 
     public float[] getCenterXY(){
-        int centerX = x + width/2;
-        int centerY = y + height/2;
+        int centerX = x + diameter/2;
+        int centerY = y + diameter/2;
         return new float[] {centerX, centerY};
     }
 

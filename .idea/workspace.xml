@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d1efc5d-2817-4c1a-a499-119c152cee1b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/Ball.class" afterPath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/Ball.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/BallWorld$1.class" afterPath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/BallWorld$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/BallWorld$ControlPanel$1.class" afterPath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/BallWorld$ControlPanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/BallWorld$ControlPanel$2.class" afterPath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/BallWorld$ControlPanel$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/BallWorld$ControlPanel$3.class" afterPath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/BallWorld$ControlPanel$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/BallWorld$ControlPanel.class" afterPath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/BallWorld$ControlPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/BallWorld$DrawCanvas.class" afterPath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/BallWorld$DrawCanvas.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/BallWorld.class" afterPath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/BallWorld.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/ContainerOval.class" afterPath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/ContainerOval.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/Obstacle.class" afterPath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/OOrientated/Obstacle.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/Physics/CollisionPhysics.class" afterPath="$PROJECT_DIR$/out/production/BouncingBall/com/BouncingBall/Physics/CollisionPhysics.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Ball.java" afterPath="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Ball.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/BallWorld.java" afterPath="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/BallWorld.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerOval.java" afterPath="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerOval.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/BouncingBall/Physics/CollisionPhysics.java" afterPath="$PROJECT_DIR$/src/com/BouncingBall/Physics/CollisionPhysics.java" />
@@ -32,12 +21,12 @@
       <file leaf-file-name="CollisionPhysics.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/Physics/CollisionPhysics.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1675">
-              <caret line="167" column="0" lean-forward="true" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
+            <state relative-caret-position="394">
+              <caret line="136" column="31" lean-forward="true" selection-start-line="136" selection-start-column="31" selection-end-line="136" selection-end-column="31" />
               <folding>
                 <element signature="method#pointIntersectsLineVertical#0;class#CollisionPhysics#0" expanded="false" />
                 <element signature="method#pointIntersectsLineHorizontal#0;class#CollisionPhysics#0" expanded="false" />
-                <element signature="method#rotate#0;class#CollisionPhysics#0" expanded="false" />
+                <marker date="1508949395993" expanded="false" signature="12452:12720" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -46,10 +35,17 @@
       <file leaf-file-name="BallWorld.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/BallWorld.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="95" column="59" lean-forward="true" selection-start-line="95" selection-start-column="59" selection-end-line="95" selection-end-column="59" />
+            <state relative-caret-position="444">
+              <caret line="74" column="55" lean-forward="false" selection-start-line="74" selection-start-column="55" selection-end-line="74" selection-end-column="55" />
               <folding>
-                <marker date="1508948741230" expanded="true" signature="11829:12125" ph="{...}" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#3481#3935#0" expanded="true" />
+                <element signature="e#3934#3935#0" expanded="true" />
+                <element signature="e#7906#7907#0" expanded="true" />
+                <element signature="e#7991#7992#0" expanded="true" />
+                <marker date="1508950265035" expanded="true" signature="11835:12131" ph="{...}" />
+                <marker date="1508950265035" expanded="false" signature="12194:12208" ph=" { " />
+                <marker date="1508950265035" expanded="false" signature="12258:12268" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -58,12 +54,9 @@
       <file leaf-file-name="ContainerOval.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerOval.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="819">
-              <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding>
-                <element signature="e#1058#1059#0" expanded="true" />
-                <element signature="e#1100#1101#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="283">
+              <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -72,15 +65,15 @@
         <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Ball.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="294">
-              <caret line="144" column="62" lean-forward="true" selection-start-line="144" selection-start-column="62" selection-end-line="144" selection-end-column="62" />
+              <caret line="150" column="5" lean-forward="false" selection-start-line="150" selection-start-column="5" selection-end-line="150" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Ball#0;class#Ball#0" expanded="false" />
                 <element signature="method#Ball#1;class#Ball#0" expanded="false" />
                 <element signature="method#moveOneStepWithCollisionDetection#0;class#Ball#0" expanded="false" />
                 <element signature="method#toString#0;class#Ball#0" expanded="false" />
-                <element signature="docComment;method#update#0;class#Ball#0" expanded="false" />
-                <element signature="method#update#0;class#Ball#0" expanded="false" />
+                <marker date="1508948940724" expanded="false" signature="5390:5570" ph="/**...*/" />
+                <marker date="1508948940724" expanded="false" signature="5605:6123" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -100,7 +93,7 @@
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="273">
-              <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+              <caret line="13" column="21" lean-forward="false" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,7 +115,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/Simple/BouncingBallSimple.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="63">
-              <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+              <caret line="5" column="3" lean-forward="false" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -131,16 +124,9 @@
       <file leaf-file-name="ContainerBox.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerBox.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#ContainerBox#0;class#ContainerBox#0" expanded="false" />
-                <element signature="e#740#741#0" expanded="true" />
-                <element signature="e#809#810#0" expanded="true" />
-                <element signature="method#set#0;class#ContainerBox#0" expanded="false" />
-                <element signature="method#draw#0;class#ContainerBox#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="45">
+              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -185,10 +171,10 @@
         <option value="$PROJECT_DIR$/src/com/BouncingBall/Physics/CollisionResponse.java" />
         <option value="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerBox.java" />
         <option value="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Obstacle.java" />
-        <option value="$PROJECT_DIR$/src/com/BouncingBall/Physics/CollisionPhysics.java" />
-        <option value="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerOval.java" />
-        <option value="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/BallWorld.java" />
         <option value="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Ball.java" />
+        <option value="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerOval.java" />
+        <option value="$PROJECT_DIR$/src/com/BouncingBall/Physics/CollisionPhysics.java" />
+        <option value="$PROJECT_DIR$/src/com/BouncingBall/OOrientated/BallWorld.java" />
       </list>
     </option>
   </component>
@@ -277,7 +263,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.MainFullScreenOnly">
     <configuration name="BouncingBall" type="Application" factoryName="Application" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="BouncingBall" />
@@ -423,8 +409,8 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-        <item index="1" class="java.lang.String" itemvalue="Application.MainFullScreenOnly" />
+        <item index="0" class="java.lang.String" itemvalue="Application.MainFullScreenOnly" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Main" />
         <item index="2" class="java.lang.String" itemvalue="Application.BouncingBallSimple" />
       </list>
     </recent_temporary>
@@ -468,10 +454,31 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39977974" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39977974" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32819384" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35462555" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1484375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32819384" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -489,9 +496,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="48" lean-forward="false" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -565,9 +570,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
           <caret line="21" column="72" lean-forward="false" selection-start-line="21" selection-start-column="72" selection-end-line="21" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -581,8 +584,8 @@
             <element signature="method#Ball#1;class#Ball#0" expanded="false" />
             <element signature="method#moveOneStepWithCollisionDetection#0;class#Ball#0" expanded="false" />
             <element signature="method#toString#0;class#Ball#0" expanded="false" />
-            <element signature="docComment;method#update#0;class#Ball#0" expanded="false" />
-            <element signature="method#update#0;class#Ball#0" expanded="false" />
+            <marker date="1508948940724" expanded="false" signature="5390:5570" ph="/**...*/" />
+            <marker date="1508948940724" expanded="false" signature="5605:6123" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -591,9 +594,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="48" lean-forward="false" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -602,7 +603,14 @@
         <state relative-caret-position="924">
           <caret line="49" column="60" lean-forward="false" selection-start-line="49" selection-start-column="60" selection-end-line="49" selection-end-column="60" />
           <folding>
-            <marker date="1508948741230" expanded="true" signature="11829:12125" ph="{...}" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3481#3935#0" expanded="true" />
+            <element signature="e#3934#3935#0" expanded="true" />
+            <element signature="e#7906#7907#0" expanded="true" />
+            <element signature="e#7991#7992#0" expanded="true" />
+            <marker date="1508950265035" expanded="true" signature="11835:12131" ph="{...}" />
+            <marker date="1508950265035" expanded="false" signature="12194:12208" ph=" { " />
+            <marker date="1508950265035" expanded="false" signature="12258:12268" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -621,14 +629,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="672">
           <caret line="34" column="33" lean-forward="false" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#ContainerBox#0;class#ContainerBox#0" expanded="false" />
-            <element signature="e#740#741#0" expanded="true" />
-            <element signature="e#809#810#0" expanded="true" />
-            <element signature="method#set#0;class#ContainerBox#0" expanded="false" />
-            <element signature="method#draw#0;class#ContainerBox#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -643,8 +644,8 @@
             <element signature="method#Ball#1;class#Ball#0" expanded="false" />
             <element signature="method#moveOneStepWithCollisionDetection#0;class#Ball#0" expanded="false" />
             <element signature="method#toString#0;class#Ball#0" expanded="false" />
-            <element signature="docComment;method#update#0;class#Ball#0" expanded="false" />
-            <element signature="method#update#0;class#Ball#0" expanded="false" />
+            <marker date="1508948940724" expanded="false" signature="5390:5570" ph="/**...*/" />
+            <marker date="1508948940724" expanded="false" signature="5605:6123" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -715,21 +716,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerBox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#ContainerBox#0;class#ContainerBox#0" expanded="false" />
-            <element signature="e#740#741#0" expanded="true" />
-            <element signature="e#809#810#0" expanded="true" />
-            <element signature="method#set#0;class#ContainerBox#0" expanded="false" />
-            <element signature="method#draw#0;class#ContainerBox#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../JChess/src/com/jchess/engine/board/Move.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-924">
@@ -748,9 +734,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="819">
           <caret line="43" column="32" lean-forward="false" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -761,22 +744,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/Physics/CollisionPhysics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1675">
-          <caret line="167" column="0" lean-forward="true" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
-          <folding>
-            <element signature="method#pointIntersectsLineVertical#0;class#CollisionPhysics#0" expanded="false" />
-            <element signature="method#pointIntersectsLineHorizontal#0;class#CollisionPhysics#0" expanded="false" />
-            <element signature="method#rotate#0;class#CollisionPhysics#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/Simple/BouncingBallSimple.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
-          <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <caret line="5" column="3" lean-forward="false" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -784,9 +755,53 @@
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
-          <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <caret line="13" column="21" lean-forward="false" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerOval.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Ball.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="150" column="5" lean-forward="false" selection-start-line="150" selection-start-column="5" selection-end-line="150" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Ball#0;class#Ball#0" expanded="false" />
+            <element signature="method#Ball#1;class#Ball#0" expanded="false" />
+            <element signature="method#moveOneStepWithCollisionDetection#0;class#Ball#0" expanded="false" />
+            <element signature="method#toString#0;class#Ball#0" expanded="false" />
+            <marker date="1508948940724" expanded="false" signature="5390:5570" ph="/**...*/" />
+            <marker date="1508948940724" expanded="false" signature="5605:6123" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/Physics/CollisionPhysics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="136" column="31" lean-forward="true" selection-start-line="136" selection-start-column="31" selection-end-line="136" selection-end-column="31" />
+          <folding>
+            <element signature="method#pointIntersectsLineVertical#0;class#CollisionPhysics#0" expanded="false" />
+            <element signature="method#pointIntersectsLineHorizontal#0;class#CollisionPhysics#0" expanded="false" />
+            <marker date="1508949395993" expanded="false" signature="12452:12720" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -799,39 +814,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/Ball.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="144" column="62" lean-forward="true" selection-start-line="144" selection-start-column="62" selection-end-line="144" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Ball#0;class#Ball#0" expanded="false" />
-            <element signature="method#Ball#1;class#Ball#0" expanded="false" />
-            <element signature="method#moveOneStepWithCollisionDetection#0;class#Ball#0" expanded="false" />
-            <element signature="method#toString#0;class#Ball#0" expanded="false" />
-            <element signature="docComment;method#update#0;class#Ball#0" expanded="false" />
-            <element signature="method#update#0;class#Ball#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/ContainerOval.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="e#1058#1059#0" expanded="true" />
-            <element signature="e#1100#1101#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/BouncingBall/OOrientated/BallWorld.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="95" column="59" lean-forward="true" selection-start-line="95" selection-start-column="59" selection-end-line="95" selection-end-column="59" />
+        <state relative-caret-position="444">
+          <caret line="74" column="55" lean-forward="false" selection-start-line="74" selection-start-column="55" selection-end-line="74" selection-end-column="55" />
           <folding>
-            <marker date="1508948741230" expanded="true" signature="11829:12125" ph="{...}" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3481#3935#0" expanded="true" />
+            <element signature="e#3934#3935#0" expanded="true" />
+            <element signature="e#7906#7907#0" expanded="true" />
+            <element signature="e#7991#7992#0" expanded="true" />
+            <marker date="1508950265035" expanded="true" signature="11835:12131" ph="{...}" />
+            <marker date="1508950265035" expanded="false" signature="12194:12208" ph=" { " />
+            <marker date="1508950265035" expanded="false" signature="12258:12268" ph=" }" />
           </folding>
         </state>
       </provider>

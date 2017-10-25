@@ -58,21 +58,21 @@ public class BallWorld extends JPanel {
         int angleInDeg = rand.nextInt(360);
         this.ball = new Ball(x, y, radius, speed, angleInDeg, Color.BLUE);*/
 
-        currentNumBalls = 1;
+        currentNumBalls = 11;
         balls[0] = new Ball(100, 410, 25, 3, 34, Color.YELLOW);
-        balls[1] = new Ball(80, 350, 25, 2, -114, Color.YELLOW);
+        balls[1] = new Ball(500, 350, 25, 2, -114, Color.YELLOW);
         balls[2] = new Ball(530, 400, 30, 3, 14, Color.GREEN);
         balls[3] = new Ball(400, 400, 30, 3, 14, Color.GREEN);
         balls[4] = new Ball(400, 50, 35, 1, -47, Color.PINK);
         balls[5] = new Ball(480, 320, 35, 4, 47, Color.PINK);
-        balls[6] = new Ball(80, 150, 40, 1, -114, Color.ORANGE);
-        balls[7] = new Ball(100, 240, 40, 2, 60, Color.ORANGE);
+        balls[6] = new Ball(500, 150, 40, 1, -114, Color.ORANGE);
+        balls[7] = new Ball(200, 240, 40, 2, 60, Color.ORANGE);
         balls[8] = new Ball(250, 380, 50, 3, -42, Color.BLUE);
-        balls[9] = new Ball(200, 80, 70, 6, -84, Color.CYAN);
+        balls[9] = new Ball(300, 400, 70, 6, -84, Color.CYAN);
         balls[10] = new Ball(500, 170, 90, 6, -42, Color.MAGENTA);
 
         for(int i = currentNumBalls; i < MAX_BALLS; i++){
-            balls[i] = new Ball(20, canvasHeight - 20, 15, 5, 45, Color.RED);
+            balls[i] = new Ball(200, canvasHeight - 150, 15, 5, 45, Color.RED);
         }
 
         //currentNumObstacles = 1;
