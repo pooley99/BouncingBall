@@ -140,8 +140,14 @@ public class Ball {
         }
     }
 
+    public void intersect(ContainerOval ovalBox, float timeLimit){
+        CollisionPhysics.pointIntersectsCircleOuter(this, ovalBox.getCenterXY()[0], ovalBox.getCenterXY()[1], ovalBox.getRadius(), timeLimit, tempResponse);
+        if(tempResponse.t < this.earliestCollisionResponse.t){
+            this.earliestCollisionResponse.copy(tempResponse);
+        }
+    }
     public void intersect(Obstacle obstacle, float timeLimit){
-        CollisionPhysics.movingPointIntersectsPoint();
+        //CollisionPhysics.movingPointIntersectsPoint();
     }
 
     /**

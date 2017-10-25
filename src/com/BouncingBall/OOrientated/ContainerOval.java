@@ -6,6 +6,7 @@ import java.awt.Graphics;
 public class ContainerOval {
 
     int x, y, width, height;
+    int diameter;
     Color borderColour;
     Color fillColour;
 
@@ -14,6 +15,7 @@ public class ContainerOval {
         this.y = y;
         this.width = x + width - 1;
         this.height = y + height - 1;
+        this.diameter = Math.min(this.width, this.height);
         this.borderColour = borderColour;
         this.fillColour = fillColour;
     }
@@ -29,11 +31,21 @@ public class ContainerOval {
         this.height = y + height - 1;
     }
 
+    public float[] getCenterXY(){
+        int centerX = x + width/2;
+        int centerY = y + height/2;
+        return new float[] {centerX, centerY};
+    }
+
+    public float getRadius(){
+        return (float)(diameter/2);
+    }
+
     public void draw(Graphics g){
         g.setColor(this.fillColour);
-        g.fillOval(this.x, this.y, this.width, this.height);
+        g.fillOval(this.x, this.y, this.diameter, this.diameter);
         g.setColor(this.borderColour);
-        g.drawOval(this.x, this.y, this.width, this.height);
+        g.drawOval(this.x, this.y, this.diameter, this.diameter);
     }
 
 }

@@ -25,6 +25,7 @@ public class BallWorld extends JPanel {
 
     //private Ball ball;
     private ContainerBox box;
+    private ContainerOval ovalBox;
 
     private DrawCanvas canvas;
     private int canvasWidth;
@@ -57,7 +58,7 @@ public class BallWorld extends JPanel {
         int angleInDeg = rand.nextInt(360);
         this.ball = new Ball(x, y, radius, speed, angleInDeg, Color.BLUE);*/
 
-        currentNumBalls = 11;
+        currentNumBalls = 1;
         balls[0] = new Ball(100, 410, 25, 3, 34, Color.YELLOW);
         balls[1] = new Ball(80, 350, 25, 2, -114, Color.YELLOW);
         balls[2] = new Ball(530, 400, 30, 3, 14, Color.GREEN);
@@ -74,10 +75,11 @@ public class BallWorld extends JPanel {
             balls[i] = new Ball(20, canvasHeight - 20, 15, 5, 45, Color.RED);
         }
 
-        currentNumObstacles = 1;
-        obstacles[0] = new CircleObstacle(400, 250, 30);
+        //currentNumObstacles = 1;
+        //obstacles[0] = new CircleObstacle(400, 250, 30);
 
-        this.box = new ContainerBox(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
+        //this.box = new ContainerBox(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
+        this.ovalBox = new ContainerOval(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
         this.canvas = new DrawCanvas();
         control = new ControlPanel();
         this.setLayout(new BorderLayout());
@@ -91,7 +93,8 @@ public class BallWorld extends JPanel {
                 Dimension dim = c.getSize();
                 canvasWidth = dim.width;
                 canvasHeight = dim.height - controlHeight;
-                box.set(0, 0, canvasWidth, canvasHeight);
+                //box.set(0, 0, canvasWidth, canvasHeight);
+                ovalBox.set(0, 0, canvasWidth, canvasHeight);
             }
         });
 
@@ -159,7 +162,8 @@ public class BallWorld extends JPanel {
             }
 
             for (int i = 0; i < currentNumBalls; i++) {
-                balls[i].intersect(box, timeLeft);
+                //balls[i].intersect(box, timeLeft);
+                balls[i].intersect(ovalBox, timeLeft);
                 if(balls[i].earliestCollisionResponse.t < tMin){
                     tMin = balls[i].earliestCollisionResponse.t;
                 }
@@ -285,7 +289,8 @@ public class BallWorld extends JPanel {
         @Override
         public void paintComponent(Graphics g){
             super.paintComponent(g);
-            box.draw(g);
+            //box.draw(g);
+            ovalBox.draw(g);
             for (int i = 0; i < currentNumBalls; i++) {
                 balls[i].draw(g);
             }
