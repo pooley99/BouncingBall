@@ -19,17 +19,20 @@ import java.util.Formatter;
  */
 public class Ball {
 
-    private float x, y;
-    private float speedX, speedY;
-    private float radius;
+    float x, y;
+    float speedX, speedY;
+    float radius;
     private Color color;
-    private CollisionResponse earliestCollisionResponse = new CollisionResponse();
+    CollisionResponse earliestCollisionResponse = new CollisionResponse();
+    private CollisionResponse tempResponse = new CollisionResponse();
+    CollisionResponse thisRepsonse = new CollisionResponse();
+    CollisionResponse anotherResponse = new CollisionResponse();
 
     private static final Color DEFAULT_COLOR = Color.BLUE;
 
     private StringBuilder sb = new StringBuilder();
     private Formatter formatter = new Formatter(this.sb);
-    private static CollisionResponse tempResponse = new CollisionResponse();
+
 
     public Ball(float x, float y, float radius, float speed, float angleInDeg, Color color){
         this.x = x;
@@ -81,8 +84,20 @@ public class Ball {
         }
     }
 
+    public float getRadius(){
+        return this.radius;
+    }
+
+    public float[] getPositionXY(){
+        return new float[] {this.x, this.y};
+    }
+
     public float getSpeed(){
         return (float)Math.sqrt(this.speedX * this.speedX + this.speedY * this.speedY);
+    }
+
+    public float[] getSpeedXY(){
+        return new float[] {this.speedX, this.speedY};
     }
 
     public float getMoveAngle(){
@@ -90,7 +105,7 @@ public class Ball {
     }
 
     public float getMass(){
-        return this.radius * this.radius * this.radius / 1000f;
+        return this.radius * this.radius * this.radius; // / 1000f;
     }
 
     public float getKineticEnergy(){
@@ -108,12 +123,20 @@ public class Ball {
     }
 
 
-    public void intersect(ContainerBox box){
-        CollisionPhysics.pointIntersectsRectangleOuter(this.x, this.y, this.speedX, this.speedY, this.radius,
-                box.minX, box.minY, box.maxX, box.maxY,
-                1.0f, tempResponse);
+    public void intersect(ContainerBox box, float timeLimit){
+        CollisionPhysics.pointIntersectsRectangleOuter(this, box.minX, box.minY, box.maxX, box.maxY, timeLimit, tempResponse);
         if(tempResponse.t < this.earliestCollisionResponse.t){
             this.earliestCollisionResponse.copy(tempResponse);
+        }
+    }
+
+    public void intersect(Ball another, float timeLimit){
+        CollisionPhysics.movingPointIntersectsMovingPoint(this, another, timeLimit, thisRepsonse, anotherResponse);
+        if (anotherResponse.t < another.earliestCollisionResponse.t){
+            another.earliestCollisionResponse.copy(anotherResponse);
+        }
+        if(thisRepsonse.t < this.earliestCollisionResponse.t){
+            this.earliestCollisionResponse.copy(thisRepsonse);
         }
     }
 
@@ -122,16 +145,16 @@ public class Ball {
      * Move for one time-step if no collision occurs; otherwise move up to
      * the earliest detected collision
      */
-    public void update(){
-        if(earliestCollisionResponse.t <= 1.0f){
+    public void update(float time){
+        if(earliestCollisionResponse.t <= time){
             //This ball collided
             this.x = earliestCollisionResponse.getNewX(this.x, this.speedX);
             this.y = earliestCollisionResponse.getNewY(this.y, this.speedY);
-            this.speedX = (float)earliestCollisionResponse.newSpeedX;
-            this.speedY = (float)earliestCollisionResponse.newSpeedY;
+            this.speedX = earliestCollisionResponse.newSpeedX;
+            this.speedY = earliestCollisionResponse.newSpeedY;
         }else {
-            this.x += this.speedX;
-            this.y += this.speedY;
+            this.x += this.speedX*time;
+            this.y += this.speedY*time;
         }
         earliestCollisionResponse.reset();
     }
