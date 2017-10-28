@@ -9,7 +9,36 @@ import java.awt.Graphics;
  * set resizes the container
  * draw
  */
-public class ContainerBox {
+
+public class ContainerBox extends BallContainer{
+
+    ContainerBox(int x, int y, int width, int height, Color fillColour, Color borderColour){
+        super(x, y, width, height, fillColour, borderColour);
+    }
+
+    ContainerBox(int x, int y, int width, int height){
+        super(x, y, width, height);
+    }
+
+    public float[] getCenterXY(){
+        int centerX = x + (maxX - x)/2;
+        int centerY = y + (maxY - y)/2;
+        return new float[] {centerX, centerY};
+    }
+
+    public float getRadius(){
+        return 0.0f;
+    }
+
+    public void draw(Graphics g){
+        g.setColor(this.fillColour);
+        g.fillRect(this.x, this.y, this.maxX - this.x - 1, this.maxY - this.y - 1);
+        g.setColor(this.borderColour);
+        g.drawRect(this.x, this.y, this.maxX - this.x - 1, this.maxY - this.y - 1);
+    }
+
+}
+/*public class ContainerBox {
 
     int minX, minY, maxX, maxY;
     Color colorFilled;
@@ -43,4 +72,4 @@ public class ContainerBox {
 
     }
 
-}
+}*/

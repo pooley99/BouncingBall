@@ -1,6 +1,7 @@
 package com.BouncingBall.OOrientated;
 
 import com.BouncingBall.OOrientated.Obstacle.CircleObstacle;
+import com.BouncingBall.OOrientated.BallContainer.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
@@ -24,14 +25,18 @@ import javax.swing.event.ChangeListener;
 public class BallWorld extends JPanel {
 
     //private Ball ball;
-    private ContainerBox box;
-    private ContainerOval ovalBox;
+    //private ContainerBox box;
+    //private ContainerOval ovalBox;
+    private BallContainer box;
 
     private DrawCanvas canvas;
     private int canvasWidth;
     private int canvasHeight;
 
     private boolean paused = false;
+    private boolean reset = false;
+    private int containerType = 1;
+
     private ControlPanel control;
     private static final int UPDATE_RATE = 30;
     private static final float EPSILON_TIME = 1e-2f;
@@ -49,6 +54,46 @@ public class BallWorld extends JPanel {
         final int controlHeight = 30;
         this.canvasWidth = width;
         this.canvasHeight = height - controlHeight;
+
+        setBalls();
+
+        //currentNumObstacles = 1;
+        //obstacles[0] = new CircleObstacle(400, 250, 30);
+        setBox("Circle");
+        //this.box = new ContainerBox(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
+        //this.box = new ContainerOval(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
+        this.canvas = new DrawCanvas();
+        control = new ControlPanel();
+        this.setLayout(new BorderLayout());
+        this.add(this.canvas, BorderLayout.CENTER);
+        this.add(control, BorderLayout.SOUTH);
+
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                Component c = (Component)e.getSource();
+                Dimension dim = c.getSize();
+                canvasWidth = dim.width;
+                canvasHeight = dim.height - controlHeight;
+                //box.set(0, 0, canvasWidth, canvasHeight);
+                box.set(0, 0, canvasWidth, canvasHeight);
+            }
+        });
+
+        gameStart();
+    }
+
+    public void setBox(String str){
+
+        if (str == "Circle") {
+            this.box = new ContainerOval(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
+        }else if (str == "Box"){
+            this.box = new ContainerBox(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
+        }
+
+    }
+
+    public void setBalls(){
 
         /*Random rand = new Random();
         int radius = 50;
@@ -74,31 +119,6 @@ public class BallWorld extends JPanel {
         for(int i = currentNumBalls; i < MAX_BALLS; i++){
             balls[i] = new Ball(200, canvasHeight - 150, 15, 5, 45, Color.RED);
         }
-
-        //currentNumObstacles = 1;
-        //obstacles[0] = new CircleObstacle(400, 250, 30);
-
-        //this.box = new ContainerBox(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
-        this.ovalBox = new ContainerOval(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
-        this.canvas = new DrawCanvas();
-        control = new ControlPanel();
-        this.setLayout(new BorderLayout());
-        this.add(this.canvas, BorderLayout.CENTER);
-        this.add(control, BorderLayout.SOUTH);
-
-        this.addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentResized(ComponentEvent e) {
-                Component c = (Component)e.getSource();
-                Dimension dim = c.getSize();
-                canvasWidth = dim.width;
-                canvasHeight = dim.height - controlHeight;
-                //box.set(0, 0, canvasWidth, canvasHeight);
-                ovalBox.set(0, 0, canvasWidth, canvasHeight);
-            }
-        });
-
-        gameStart();
     }
 
     public void gameStart(){
@@ -119,6 +139,12 @@ public class BallWorld extends JPanel {
                         gameUpdate();
                         //refresh display
                         repaint();
+                    }
+
+                    if (reset){
+                        setBalls();
+                        repaint();
+                        reset = false;
                     }
 
                     //provide the necessary delay to meet the target rate
@@ -163,7 +189,7 @@ public class BallWorld extends JPanel {
 
             for (int i = 0; i < currentNumBalls; i++) {
                 //balls[i].intersect(box, timeLeft);
-                balls[i].intersect(ovalBox, timeLeft);
+                balls[i].intersect(box, timeLeft);
                 if(balls[i].earliestCollisionResponse.t < tMin){
                     tMin = balls[i].earliestCollisionResponse.t;
                 }
@@ -214,7 +240,7 @@ public class BallWorld extends JPanel {
             //store starting speeds
             final float[] ballSavedSpeedXs = new float[MAX_BALLS];
             final float[] ballSavedSpeedYs = new float[MAX_BALLS];
-            for(int i=0; i<currentNumBalls; i++){
+            for(int i=0; i<MAX_BALLS; i++){
                 ballSavedSpeedXs[i] = balls[i].speedX;
                 ballSavedSpeedYs[i] = balls[i].speedY;
             }
@@ -249,6 +275,36 @@ public class BallWorld extends JPanel {
                         if(currentNumBalls == MAX_BALLS){
                             launchControl.setEnabled(false);
                         }
+                    }
+                }
+            });
+
+            JButton resetControl = new JButton("Reset");
+            //this.add(new JLabel("Reset"));
+            this.add(resetControl);
+            resetControl.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    reset = true;
+                }
+            });
+
+            JButton switchContainer = new JButton("Switch Container");
+            this.add(switchContainer);
+            switchContainer.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    containerType++;
+                    if(containerType > 2){
+                        containerType = 1;
+                    }
+                    switch(containerType){
+                        case 1 : setBalls();
+                                setBox("Box");
+                                break;
+                        case 2 : setBalls();
+                                setBox("Circle");
+                                break;
                     }
                 }
             });
@@ -290,7 +346,7 @@ public class BallWorld extends JPanel {
         public void paintComponent(Graphics g){
             super.paintComponent(g);
             //box.draw(g);
-            ovalBox.draw(g);
+            box.draw(g);
             for (int i = 0; i < currentNumBalls; i++) {
                 balls[i].draw(g);
             }
