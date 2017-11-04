@@ -138,6 +138,26 @@ public class Ball {
         }
     }
 
+    public void intersect(Obstacle obstacle, float timeLimit){
+        if(obstacle instanceof ObstacleCircle){
+            CollisionPhysics.pointIntersectsPoint(this.x, this.y, this.speedX, this.speedY, this.radius,
+                    ((ObstacleCircle) obstacle).x, ((ObstacleCircle) obstacle).y, ((ObstacleCircle) obstacle).radius,
+                    timeLimit, tempResponse);
+        }else if(obstacle instanceof  ObstacleRect){
+            CollisionPhysics.pointIntersectsPolygon(this.x, this.y, this.speedX, this.speedY, this.radius,
+                    ((ObstacleRect) obstacle).rectXs, ((ObstacleRect) obstacle).rectYs, 4,
+                    timeLimit, tempResponse);
+        }else if(obstacle instanceof ObstaclePoly){
+            CollisionPhysics.pointIntersectsPolygon(this.x, this.y, this.speedX, this.speedY, this.radius,
+                    ((ObstaclePoly) obstacle).polyXs, ((ObstaclePoly) obstacle).polyYs, ((ObstaclePoly) obstacle).numPoints,
+                    timeLimit, tempResponse);
+        }
+        if(tempResponse.t < this.earliestCollisionResponse.t){
+            this.earliestCollisionResponse.copy(tempResponse);
+        }
+
+    }
+
     public void intersect(ContainerBox box, float timeLimit){
         CollisionPhysics.pointIntersectsRectangleOuter(this.x, this.y, this.speedX, this.speedY, this.radius,
                 box.x, box.y, box.maxX, box.maxY, timeLimit, tempResponse);
@@ -147,7 +167,7 @@ public class Ball {
     }
 
     public void intersect(Ball another, float timeLimit){
-        CollisionPhysics.movingPointIntersectsPoint(this.x, this.y, this.speedX, this.speedY, this.radius,
+        CollisionPhysics.pointIntersectsMovingPoint(this.x, this.y, this.speedX, this.speedY, this.radius,
                                                     another.x, another.y, another.speedX, another.speedY, another.radius,
                                                     timeLimit, thisRepsonse, anotherResponse);
         if (anotherResponse.t < another.earliestCollisionResponse.t){
@@ -165,9 +185,7 @@ public class Ball {
             this.earliestCollisionResponse.copy(tempResponse);
         }
     }
-    public void intersect(Obstacle obstacle, float timeLimit){
-        //CollisionPhysics.movingPointIntersectsPoint();
-    }
+
 
     /**
      * Update the states of the ball for one time-step

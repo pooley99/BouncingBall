@@ -1,10 +1,7 @@
 package com.BouncingBall.OOrientated;
 
-import com.BouncingBall.OOrientated.Obstacle.CircleObstacle;
-import com.BouncingBall.OOrientated.BallContainer.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Random;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -35,13 +32,16 @@ public class BallWorld extends JPanel {
 
     private boolean paused = false;
     private boolean reset = false;
+
     private int containerType = 1;
+    private String[] containers = {"Box", "Circle"};
 
     private ControlPanel control;
     private static final int UPDATE_RATE = 30;
     private static final float EPSILON_TIME = 1e-2f;
 
     private static final int MAX_BALLS = 25;
+    private static int startNumBalls = 5;
     private int currentNumBalls;
     private Ball[] balls = new Ball[MAX_BALLS];
 
@@ -55,11 +55,13 @@ public class BallWorld extends JPanel {
         this.canvasWidth = width;
         this.canvasHeight = height - controlHeight;
 
-        setBalls();
+        setBox("Circle");
+        setBalls(startNumBalls);
+        setObstacles(2);
 
         //currentNumObstacles = 1;
         //obstacles[0] = new CircleObstacle(400, 250, 30);
-        setBox("Circle");
+
         //this.box = new ContainerBox(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
         //this.box = new ContainerOval(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
         this.canvas = new DrawCanvas();
@@ -75,7 +77,7 @@ public class BallWorld extends JPanel {
                 Dimension dim = c.getSize();
                 canvasWidth = dim.width;
                 canvasHeight = dim.height - controlHeight;
-                //box.set(0, 0, canvasWidth, canvasHeight);
+                //box.move(0, 0, canvasWidth, canvasHeight);
                 box.set(0, 0, canvasWidth, canvasHeight);
             }
         });
@@ -85,15 +87,15 @@ public class BallWorld extends JPanel {
 
     public void setBox(String str){
 
-        if (str == "Circle") {
-            this.box = new ContainerOval(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
-        }else if (str == "Box"){
+        if (str == "Box") {
             this.box = new ContainerBox(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
+        }else if (str == "Circle"){
+            this.box = new ContainerOval(0, 0, this.canvasWidth, this.canvasHeight, Color.BLACK, Color.WHITE);
         }
 
     }
 
-    public void setBalls(){
+    public void setBalls(int num){
 
         /*Random rand = new Random();
         int radius = 50;
@@ -103,7 +105,32 @@ public class BallWorld extends JPanel {
         int angleInDeg = rand.nextInt(360);
         this.ball = new Ball(x, y, radius, speed, angleInDeg, Color.BLUE);*/
 
-        currentNumBalls = 11;
+        /*Random rand = new Random();
+        int radiusLimit = 6;
+        int speedLimit = 5;
+        int angleLimit = 360;
+
+        int x, y, radius, speed, angle, xLimit, yLimit
+        for(int i = 0; i < currentNumBalls; i++){
+            angle = rand.nextInt(angleLimit);
+            speed = rand.nextInt(speedLimit);
+            radius = rand.nextInt(radiusLimit) * 10;
+            xLimit = (this.canvasWidth - radius * 2 - 20);
+            x = rand.nextInt(xLimit) + radius + 10;
+            if(box instanceof ContainerBox){
+                int yLimit = (this.canvasHeight - radius * 2 - 20);
+            } else if(box instanceof ContainerOval){
+                int yBase = this.canvasHeight/2;
+                int
+                int yLimit = (this.canvasHeight * () - radius * 2 - 20);
+            }
+            y = rand.nextInt(yLimit) + radius + 10;
+
+            balls[i] = new Ball(x, y, radius, speed, angle, Color.Yellow);
+        }*/
+
+
+        currentNumBalls = num;
         balls[0] = new Ball(100, 410, 25, 3, 34, Color.YELLOW);
         balls[1] = new Ball(500, 350, 25, 2, -114, Color.YELLOW);
         balls[2] = new Ball(530, 400, 30, 3, 14, Color.GREEN);
@@ -117,8 +144,18 @@ public class BallWorld extends JPanel {
         balls[10] = new Ball(500, 170, 90, 6, -42, Color.MAGENTA);
 
         for(int i = currentNumBalls; i < MAX_BALLS; i++){
-            balls[i] = new Ball(200, canvasHeight - 150, 15, 5, 45, Color.RED);
+            balls[i] = new Ball(200, canvasHeight - 150, 30, 5, 45, Color.RED);
         }
+    }
+
+    public void setObstacles(int num){
+        currentNumObstacles = num;
+        float[] pXs = new float[]{500, 550, 600};
+        float[] pYs = new float[]{500, 450, 500};
+        obstacles[0] = new ObstaclePoly(pXs, pYs, 3);
+        obstacles[1] = new ObstacleRect(300, 300, 50, 50);
+
+        //obstacles[0] = new ObstacleCircle(500, 500, 30);
     }
 
     public void gameStart(){
@@ -142,7 +179,7 @@ public class BallWorld extends JPanel {
                     }
 
                     if (reset){
-                        setBalls();
+                        setBalls(startNumBalls);
                         repaint();
                         reset = false;
                     }
@@ -150,7 +187,7 @@ public class BallWorld extends JPanel {
                     //provide the necessary delay to meet the target rate
                     timeTakenMillis = System.currentTimeMillis() - beginTimeMillis;
                     timeLeftMillis = 1000L / UPDATE_RATE - timeTakenMillis;
-                    if (timeLeftMillis < 5) timeLeftMillis = 5; //set a minimum
+                    if (timeLeftMillis < 5) timeLeftMillis = 5; //move a minimum
 
                     //Delay and give other thread a chance
                     try {
@@ -195,11 +232,11 @@ public class BallWorld extends JPanel {
                 }
             }
 
-            for(int i =0; i < currentNumObstacles; i++){
-                for(int j=0; j<currentNumBalls; j++){
-                    balls[j].intersect(obstacles[i], timeLeft);
-                    if(balls[j].earliestCollisionResponse.t < tMin){
-                        tMin = balls[j].earliestCollisionResponse.t;
+            for(int i =0; i < currentNumBalls; i++){
+                for(int j=0; j<currentNumObstacles; j++){
+                    balls[i].intersect(obstacles[j], timeLeft);
+                    if(balls[i].earliestCollisionResponse.t < tMin){
+                        tMin = balls[i].earliestCollisionResponse.t;
                     }
                 }
             }
@@ -289,7 +326,7 @@ public class BallWorld extends JPanel {
                 }
             });
 
-            JButton switchContainer = new JButton("Switch Container");
+            /*JButton switchContainer = new JButton("Switch Container");
             this.add(switchContainer);
             switchContainer.addActionListener(new ActionListener() {
                 @Override
@@ -299,15 +336,31 @@ public class BallWorld extends JPanel {
                         containerType = 1;
                     }
                     switch(containerType){
-                        case 1 : setBalls();
+                        case 1 : setBalls(startNumBalls);
                                 setBox("Box");
                                 break;
-                        case 2 : setBalls();
+                        case 2 : setBalls(startNumBalls);
                                 setBox("Circle");
                                 break;
                     }
                 }
+            });*/
+
+            JComboBox dropDown = new JComboBox(containers);
+            if(box instanceof ContainerBox){
+                dropDown.setSelectedIndex(0);
+            } else if(box instanceof ContainerOval){
+                dropDown.setSelectedIndex(1);
+            }
+            this.add(dropDown);
+            dropDown.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setBalls(startNumBalls);
+                    setBox((String)dropDown.getSelectedItem());
+                }
             });
+
 
             /*// A slider for adjusting the radius of the ball
             int minRadius = 10;

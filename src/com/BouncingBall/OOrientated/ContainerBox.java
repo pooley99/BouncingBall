@@ -6,7 +6,7 @@ import java.awt.Graphics;
 /**
  * Container Box
  *Creates a container box with specified coordinates, width, height background and border color
- * set resizes the container
+ * move resizes the container
  * draw
  */
 
@@ -32,9 +32,9 @@ public class ContainerBox extends BallContainer{
 
     public void draw(Graphics g){
         g.setColor(this.fillColour);
-        g.fillRect(this.x, this.y, this.maxX - this.x - 1, this.maxY - this.y - 1);
+        g.fillRect(this.x, this.y, this.maxX - this.x + 1, this.maxY - this.y - 1);
         g.setColor(this.borderColour);
-        g.drawRect(this.x, this.y, this.maxX - this.x - 1, this.maxY - this.y - 1);
+        g.drawRect(this.x, this.y, this.maxX - this.x + 1, this.maxY - this.y - 1);
     }
 
 }
@@ -57,7 +57,7 @@ public class ContainerBox extends BallContainer{
         this(x, y, width, height, Color.BLACK, Color.YELLOW );
     }
 
-    public void set(int x, int y, int width, int height){
+    public void move(int x, int y, int width, int height){
         this.minX = x;
         this.minY = y;
         this.maxX = x + width - 1;

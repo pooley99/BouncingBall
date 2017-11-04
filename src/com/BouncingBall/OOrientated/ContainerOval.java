@@ -57,7 +57,7 @@ public class ContainerOval {
         this(x, y, width, height, Color.BLACK, Color.YELLOW);
     }
 
-    public void set(int x, int y, int width, int height){
+    public void move(int x, int y, int width, int height){
         this.x = x;
         this.y = y;
         this.diameter = x + Math.min(width, height) - 1;

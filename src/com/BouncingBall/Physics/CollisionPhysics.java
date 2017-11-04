@@ -103,9 +103,11 @@ public class CollisionPhysics {
 
         if(t > 0 && t <= timeLimit){
 
+            float impactX = pX + speedX * t;
+            float impactY = pY + speedY * t;
 
             pointIntersectsLineNormalResponse(pX, pY, speedX, speedY,
-                    outerCenterX, outerCenterY, response, t);
+                    outerCenterX, outerCenterY, impactX, impactY, t, response);
         }
     }
 
@@ -131,16 +133,13 @@ public class CollisionPhysics {
     }
 
     public static void pointIntersectsLineNormalResponse(float pX, float pY, float speedX, float speedY,
-                                                         float centerX, float centerY,
-                                                         CollisionResponse response, float t){
+                                                         float lineX1, float lineY1, float lineX2, float lineY2,
+                                                         float t, CollisionResponse response){
 
         response.t = t;
 
-        double impactX = response.getImpactX(pX, speedX);
-        double impactY = response.getImpactY(pY, speedY);
-
         //rotate so tangent is normal, and collision is p
-        double lineAngle = Math.atan2(impactY-centerY, impactX-centerX);
+        double lineAngle = Math.atan2(lineY2-lineY1, lineX2-lineX1);
         double[] result = rotate(speedX, speedY, lineAngle);
         double speedP = result[0];
         double speedN = result[1];
@@ -155,23 +154,23 @@ public class CollisionPhysics {
 
     }
 
-    public static void movingPointIntersectsPoint(float p1X, float p1Y, float speed1X, float speed1Y, float radius1,
+    public static void pointIntersectsMovingPoint(float p1X, float p1Y, float speed1X, float speed1Y, float radius1,
                                                   float p2X, float p2Y, float speed2X, float speed2Y, float radius2,
                                                   float timeLimit, CollisionResponse thisResponse, CollisionResponse anotherResponse){
 
         thisResponse.reset();
         anotherResponse.reset();
 
-        float time = movingPointIntersectsPointDetection(p1X, p1Y, speed1X, speed1Y, radius1,
+        float time = pointIntersectsMovingPointDetection(p1X, p1Y, speed1X, speed1Y, radius1,
                                                          p2X, p2Y, speed2X, speed2Y, radius2);
         if(time > 0 && time < timeLimit){
-            movingPointIntersectsPointResponse(p1X, p1Y, speed1X, speed1Y, radius1,
+            pointIntersectsMovingPointResponse(p1X, p1Y, speed1X, speed1Y, radius1,
                                                p2X, p2Y, speed2X, speed2Y, radius2,
                                                time, thisResponse, anotherResponse);
         }
     }
 
-    public static float movingPointIntersectsPointDetection(float p1X, float p1Y, float speed1X, float speed1Y, float radius1,
+    public static float pointIntersectsMovingPointDetection(float p1X, float p1Y, float speed1X, float speed1Y, float radius1,
                                                             float p2X, float p2Y, float speed2X, float speed2Y, float radius2){
 
         //detection occurs when the distance between two balls, r, is r = r1 + r2
@@ -219,7 +218,7 @@ public class CollisionPhysics {
         }
     }
 
-    public static void movingPointIntersectsPointResponse(float p1X, float p1Y, float speed1X, float speed1Y, float radius1,
+    public static void pointIntersectsMovingPointResponse(float p1X, float p1Y, float speed1X, float speed1Y, float radius1,
                                                           float p2X, float p2Y, float speed2X, float speed2Y, float radius2,
                                                           float time, CollisionResponse thisResponse, CollisionResponse anotherResponse){
         //calculated using the equations:
@@ -288,10 +287,204 @@ public class CollisionPhysics {
 
     }
 
+
+    public static void pointIntersectsPolygon(float pX, float pY, float speedX, float speedY, float radius,
+                                              float[] polyXs, float[] polyYs, int numPoints,
+                                              float timeLimit, CollisionResponse response){
+
+        //TODO: assume size of polyXs == polyYs
+        //assume radius >= 0
+        //assume timeLimit > 0
+
+        response.reset();
+        float lineX1, lineY1, lineX2, lineY2;
+        for(int i = 0; i < numPoints; i++){
+            lineX1 = polyXs[i];
+            lineY1 = polyYs[i];
+            lineX2 = polyXs[(i + 1) % numPoints];
+            lineY2 = polyYs[(i + 1) % numPoints];
+
+            pointIntersectsLineSegmentNoEndPoints(pX, pY, speedX, speedY, radius,
+                                                  lineX1, lineY1, lineX2, lineY2,
+                                                  timeLimit, tempResponse);
+            if(tempResponse.t < response.t){
+                response.copy(tempResponse);
+            }
+
+            pointIntersectsPoint(pX, pY, speedX, speedY, radius,
+                                 lineX1, lineY1, 0.0f,
+                                 timeLimit, tempResponse);
+            if(tempResponse.t < response.t){
+                response.copy(tempResponse);
+            }
+
+        }
+
+    }
+
+    public static void pointIntersectsLineSegment(float pX, float pY, float speedX, float speedY, float radius,
+                                                  float lineX1, float lineY1, float lineX2, float lineY2,
+                                                  float timeLimit, CollisionResponse response){
+
+        response.reset();
+        pointIntersectsLineSegmentNoEndPoints(pX, pY, speedX, speedY, radius,
+                                              lineX1, lineY1, lineX2, lineY2,
+                                              timeLimit, tempResponse);
+        if(tempResponse.t < response.t){
+            response.copy(tempResponse);
+        }
+
+        pointIntersectsPoint(pX, pY, speedX, speedY, radius, lineX1, lineY1, 0.0f, timeLimit, tempResponse);
+        if(tempResponse.t < response.t){
+            response.copy(tempResponse);
+        }
+
+        pointIntersectsPoint(pX, pY, speedX, speedY, radius, lineX2, lineY2, 0.0f, timeLimit, tempResponse);
+        if(tempResponse.t < response.t){
+            response.copy(tempResponse);
+        }
+
+
+    }
+
+    public static void pointIntersectsLineSegmentNoEndPoints(float pX, float pY, float speedX, float speedY, float radius,
+                                                        float lineX1, float lineY1, float lineX2, float lineY2,
+                                                        float timeLimit, CollisionResponse response){
+
+        //response.reset();
+
+        if(lineX1 == lineX2){
+            pointIntersectsLineVertical(pX, pY, speedX, speedY, radius, lineX1, timeLimit, response);
+            double impactY = response.getImpactY(pY, speedY);
+            if (!(impactY >= lineY1 && impactY <= lineY2 || impactY >= lineY2 && impactY <= lineY1)) {
+                response.reset();  // no collision
+            }
+            return;
+        }else if(lineY1 == lineY2){
+            pointIntersectsLineHorizontal(pX, pY, speedX, speedY, radius, lineY1, timeLimit, response);
+            // Need to confirm that the point of impact is within the line-segment
+            double impactX = response.getImpactX(pX, speedX);
+            if (!(impactX >= lineX1 && impactX <= lineX2 || impactX >= lineX2 && impactX <= lineX1)) {
+                response.reset();
+            }
+            return;
+        }
+
+        response.reset();
+
+        float[] result = pointIntersectsLineDetection(pX, pY, speedX, speedY, radius,
+                                                lineX1, lineY1, lineX2, lineY2,
+                                                timeLimit, response);
+        float t = result[0];
+        float lambda = result[1];
+
+        if(t >= 0 && t <= 1 && lambda >= 0 && lambda <= 1){
+            pointIntersectsLineResponse(pX, pY, speedX, speedY, lineX1, lineY1, lineX2, lineY2, t, response);
+        }
+    }
+
+    public static float[] pointIntersectsLineDetection(float pX, float pY, float speedX, float speedY, float radius,
+                                                       float lineX1, float lineY1, float lineX2, float lineY2,
+                                                       float timeLimit, CollisionResponse response){
+
+        double lineVectorX = lineX2 - lineX1;
+        double lineVectorY = lineY2 - lineY1;
+
+        double lineAngle = Math.atan2(lineVectorY, lineVectorX);
+        double rotatedY = rotate(pX - lineX1, pY - lineY1, lineAngle)[1];
+
+        double lineX1Offset = lineX1;
+        double lineY1Offset = lineY1;
+        if(rotatedY > 0){
+            lineX1Offset -= radius * Math.sin(lineAngle);
+            lineY1Offset += radius * Math.cos(lineAngle);
+        } else{
+            lineX1Offset += radius * Math.sin(lineAngle);
+            lineY1Offset -= radius * Math.cos(lineAngle);
+        }
+
+        double det = speedY * lineVectorX - speedX * lineVectorY;
+        if(det == 0){
+            return new float[]{Float.MAX_VALUE, Float.MAX_VALUE};
+        }
+
+        double xDiff = lineX1Offset - pX;
+        double yDiff = lineY1Offset - pY;
+
+        double t = (lineVectorX * yDiff - lineVectorY * xDiff) / det;
+        double lambda = (speedX * yDiff - speedY * xDiff) / det;
+
+        return new float[]{(float)t, (float)lambda};
+
+    }
+
+    public static void pointIntersectsLineResponse(float pX, float pY, float speedX, float speedY,
+                                                   float lineX1, float lineY1, float lineX2, float lineY2,
+                                                   float t, CollisionResponse response){
+
+        response.t = t;
+
+        //rotate so tangent is normal, and collision is p
+        double lineAngle = Math.atan2(lineY2-lineY1, lineX2-lineX1);
+        double[] result = rotate(speedX, speedY, lineAngle);
+        double speedP = result[0];
+        double speedN = result[1];
+
+        //Reflect along the collision (P),  no change along normal
+        double speedPAfter = speedP;
+        double speedNAfter = -speedN;
+
+        result = rotate(speedPAfter, speedNAfter, -lineAngle);
+        response.newSpeedX = (float)result[0];
+        response.newSpeedY = (float)result[1];
+
+    }
+
+    public static void pointIntersectsPoint(float p1X, float p1Y, float speedX, float speedY, float radius1,
+                                            float p2X, float p2Y, float radius2,
+                                            float timeLimit, CollisionResponse response){
+
+        float t = pointIntersectsMovingPointDetection(p1X, p1Y, speedX, speedY, radius1,
+                                                      p2X, p2Y, 0.0f, 0.0f, radius2);
+
+        if(t >= 0 && t <= 1){
+            pointIntersectsPointResponse(p1X, p1Y, speedX, speedY, p2X, p2Y, t, response);
+        }
+
+    }
+
+    public static void pointIntersectsPointResponse(float p1X, float p1Y, float speedX, float speedY,
+                                                    float p2X, float p2Y, float t, CollisionResponse response){
+
+        response.t = t;
+        double impactX = response.getImpactX(p1X, speedX);
+        double impactY = response.getImpactY(p1Y, speedY);
+
+        double lineAngle = Math.atan2(p2Y - impactY, p2X - impactX);
+        double[] result = rotate(speedX, speedY, lineAngle);
+        double speedP = result[0];
+        double speedN = result[1];
+
+        if(speedP <= 0){
+            response.reset();
+            return;
+        }
+
+        double speedPAfter = -speedP;
+        double speedNAfter = speedN;
+
+        result = rotate(speedPAfter, speedNAfter, -lineAngle);
+        response.newSpeedX = (float)result[0];
+        response.newSpeedY = (float)result[1];
+
+    }
+
+
     /*public static void movingPointIntersectsOvalObstacle(Ball ball, int x, int y, int width, int height, float timeLimit, CollisionResponse response){
 
     }*/
 
+    //having static static array reduces time needed for creation of array everytime rotate is called
     private static double[] rotateResult = new double[2];
     private static double[] rotate(double x, double y, double theta){
         //double[] result = new double[2];
@@ -302,6 +495,7 @@ public class CollisionPhysics {
         return rotateResult;
     }
 
+    //creating static array when value is returned
     private static double[] quadraticEquation(double a, double b, double c){
         // x = (-b + sqrt(b^2 - 4ac))/(2a)
         double termB2minus4AC = b*b - 4*a*c;
