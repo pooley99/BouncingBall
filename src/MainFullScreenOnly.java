@@ -26,7 +26,7 @@ public class MainFullScreenOnly extends JFrame{
         }
         //Allocate the game panel to fill the current screen
         BallWorld ballWorld = new BallWorld(this.getWidth(), this.getHeight()-40);
-        this.setContentPane(ballWorld); //set as content pane for this JFrame
+        this.setContentPane(ballWorld); //move as content pane for this JFrame
 
         this.addKeyListener(new KeyAdapter() {
             @Override
